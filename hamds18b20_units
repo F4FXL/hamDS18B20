@@ -1,0 +1,5 @@
+#! /bin/bash
+callsign=`head -n 1 /etc/hamds18b20.conf`
+filename=`tail -n 1 /etc/hamds18b20.conf`
+hamds18b20 -f $filename 
+

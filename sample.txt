@@ -1,0 +1,2 @@
+36 01 ff ff 7f ff ff ff 99 : crc=99 YES
+36 01 ff ff 7f ff ff ff 99 t=19375

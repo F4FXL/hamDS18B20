@@ -1,0 +1,50 @@
+A command line sensor logger for DS18B20 temperature devices, mainly found on Raspberry Pi. It turns the output data into APRS telemetry frames ready to be sent over APRS.
+To be used with APRX new exec beacon format or with G4KLX texttransmit to transmit on a DStar repeater.
+
+
+Install intructions (Debian / Ubuntu)
+=====================================
+
+1. Install build-essential 
+
+    sudo apt-get install build-essential
+
+2. Compile:
+
+    make
+
+3. Install:
+
+    sudo make install
+
+4. Uninstall
+
+    sudo make uninstall
+
+
+
+Usage instructions to send temperature over APRS using APRX
+============================================================
+
+- APRX does not support calling arguments therefore I made some helper scripts
+- Prior first use with APRX edit the config file and put your own callsign on the first line and the path to your ds18b20 on the second line. Must match the src callsign configured for the beacon in APRX but must be different from the $mycall APRX callsign.
+
+Here a sample of the beacon I am using. $mycall is set to F4FXL-1, therefore to not conflict with APRX's built in telemetry we need to use another callsign.
+<beacon>
+	beaconmode both
+	cycle-size 40m
+	beacon interface $mycall srccall F4FXL-2 $myloc symbol "IA" comment "Station Temp" via WIDE2-1
+	beacon interface $mycall srccall F4FXL-2 exec "/home/pi/aprstemper/hamds18b20_labels"
+	beacon interface $mycall srccall F4FXL-2 exec "/home/pi/aprstemper/hamds18b20_eq"
+	beacon interface $mycall srccall F4FXL-2 exec "/home/pi/aprstemper/hamds18b20_units"
+</beacon>
+
+<beacon>
+	beaconmode both
+	cycle-size 5m
+	beacon interface $mycall srccall F4FXL-2 exec "/home/pi/aprstemper/hamds18b20_telem"
+	beacon interface $mycall srccall F4FXL-2 exec "/home/pi/aprstemper/hamds18b20_status"
+</beacon>
+
+
+
