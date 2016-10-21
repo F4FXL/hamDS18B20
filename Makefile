@@ -2,7 +2,7 @@
 CC=gcc
 CFLAGS=-Wall
 
-all: aprstemper
+all: hamds18b20
 
 hamds18b20: hamds18b20.c
 	$(CC) $(CFLAGS) hamds18b20.c -o hamds18b20
