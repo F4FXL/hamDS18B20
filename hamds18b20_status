@@ -1,5 +1,6 @@
 #! /bin/bash
-tmpscript='/tmp/hamds18b20'
+tmpscript=`cat /dev/urandom | tr -cd 'a-f0-9' | head -c 32`
+tmpscript="/tmp/"$tmpscript
 callsign=`sed '1q;d' /etc/hamds18b20.conf`
 filename=`sed '2q;d' /etc/hamds18b20.conf`
 passcode=`sed '3q;d' /etc/hamds18b20.conf`
@@ -13,4 +14,5 @@ echo "sleep 2" >> $tmpscript
 echo "echo '$frame'" >> $tmpscript
 chmod +x $tmpscript
 $tmpscript | socat - TCP:$aprshost
+rm -f $tmpscript
 
