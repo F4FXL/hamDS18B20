@@ -1,4 +1,16 @@
 #! /bin/bash
-callsign=`head -n 1 /etc/hamds18b20.conf`
-filename=`tail -n 1 /etc/hamds18b20.conf`
-hamds18b20 -f $filename  -tc $callsign
+tmpscript='/tmp/hamds18b20'
+callsign=`sed '1q;d' /etc/hamds18b20.conf`
+filename=`sed '2q;d' /etc/hamds18b20.conf`
+passcode=`sed '3q;d' /etc/hamds18b20.conf`
+aprshost=`sed '4q;d' /etc/hamds18b20.conf`
+frametext=`hamds18b20 -f $filename  -tc $callsign`
+frame=$callsign">APRS:"$frametext
+logintext="user $callsign pass $passcode hamDS18B20 1.0"
+echo '#!/bin/bash' > $tmpscript
+echo "echo '$logintext'" >> $tmpscript
+echo "sleep 2" >> $tmpscript
+echo "echo '$frame'" >> $tmpscript
+chmod +x $tmpscript
+$tmpscript | socat - TCP:$aprshost
+
