@@ -99,7 +99,7 @@ void print_status(char * fileName)
     float temp;
     if(!read_temp(&temp, fileName))
     {
-        printf(">Temperature: %.1f°C\n", temp);
+        printf(">Temperature: %.1f C\n", temp);
         fflush(stdout);
     }
 }
@@ -109,7 +109,7 @@ void print_text(char * fileName)
     float temp;
     if(!read_temp(&temp, fileName))
     {
-        printf("Temp.: %.1f°C\n", temp);
+        printf("Temp.: %.1f C\n", temp);
         fflush(stdout);
     }
 }
