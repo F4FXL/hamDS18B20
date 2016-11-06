@@ -189,5 +189,8 @@ int read_temp(float * temp, char * fileName)
         fclose(fileHandle);
     }
 
+    if(*temp >= 85.0)//this means the temp sensor did not sample first temp, say it is invalid
+        result = 1;
+
     return result;
 }
