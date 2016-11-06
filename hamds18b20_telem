@@ -7,7 +7,7 @@ passcode=`sed '3q;d' /etc/hamds18b20.conf`
 aprshost=`sed '4q;d' /etc/hamds18b20.conf`
 frametext=`hamds18b20 -f $filename  -tc $callsign`
 frame=$callsign">APRS:"$frametext
-logintext="user $callsign pass $passcode hamDS18B20 1.0"
+logintext="user $callsign pass $passcode vers hamDS18B20 1.0"
 echo '#!/bin/bash' > $tmpscript
 echo "echo '$logintext'" >> $tmpscript
 echo "sleep 2" >> $tmpscript
