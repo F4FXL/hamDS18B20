@@ -5,22 +5,29 @@ To be used with APRX new exec beacon format or with G4KLX texttransmit to transm
 Install intructions (Debian / Ubuntu)
 =====================================
 
-1. Install build-essential 
+1. Enable 1Wire bus
 
-    sudo apt-get install build-essential
+    https://www.raspberrypi-spy.co.uk/2018/02/enable-1-wire-interface-raspberry-pi/
+    google is your friend for wiring the DS18B20 to your pi
 
-2. Compile:
+2. Install prerequisites
+
+    sudo apt-get install build-essential socat
+
+3. Compile:
 
     make
 
-3. Install:
+4. Install:
 
     sudo make install
 
-4. Uninstall
+5. Uninstall
 
     sudo make uninstall
-
+    
+6. Adjust settings
+    sudo nano /etc/hamds18b20.conf
 
 
 Usage instructions to send temperature over APRS-IS
