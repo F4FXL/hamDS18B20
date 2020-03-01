@@ -30,10 +30,10 @@ Usage instructions to send temperature over APRS-IS
 - Prior first use with APRX edit the config file and put your own callsign on the first line and the path to your ds18b20 on the second line. Put your aprs passcode on the third. adjust aprs server if needed on the fourth line
 - Here a crontab example. Telemetrw labels and units are sent every 15 minutes whereas telemetrw values and a status are sent every 5 minutes
 
-*/15 * * * * /usr/bin/hamds18b20_labels
-*/15 * * * * /usr/bin/hamds18b20_eq
-*/15 * * * * /usr/bin/hamds18b20_units
-*/5 * * * * /usr/bin/hamds18b20_telem
-*/5 * * * * /usr/bin/hamds18b20_status
+1-59/15 * * * * /usr/bin/hamds18b20_labels
+2-59/15 * * * * /usr/bin/hamds18b20_eq
+3-59/15 * * * * /usr/bin/hamds18b20_units
+4-59/5 * * * * /usr/bin/hamds18b20_telem
+5-59/5 * * * * /usr/bin/hamds18b20_status
 
 
