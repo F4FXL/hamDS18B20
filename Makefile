@@ -17,6 +17,7 @@ install:
 	install hamds18b20_status /usr/bin
 	install hamds18b20_telem /usr/bin
 	install hamds18b20_units /usr/bin
+	install hamds18b20_posit /usr/bin
 	install hamds18b20.conf /etc/hamds18b20.conf
 
 uninstall:
