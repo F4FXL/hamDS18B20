@@ -1,0 +1,7 @@
+#! /bin/bash
+callsign=`sed '1q;d' /etc/hamds18b20.conf`
+filename=`sed '2q;d' /etc/hamds18b20.conf`
+port=`sed '3q;d' /etc/hamds18b20.conf`
+position=`sed '3q;d' /etc/hamds18b20.conf`
+frametext=`hamds18b20 -f $filename  -dc $callsign`
+beacon -c $callsign -d "TEMPER WIDE2-1" -s $port "$posit$frametext"
